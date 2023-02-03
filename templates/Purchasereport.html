@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+	<title> FAB_PURCHASE</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">	
+</head>
+<body>
+
+  <div>
+    <p><b>Issue date: {{ issuedate }} </b></p>
+  </div>
+  <div>
+    <style>
+      th { text-align:center; color:blue; }
+      table, th, td { 
+        text-align:center;
+        height: 10px;
+        border: 1px solid rgb(3, 248, 109);
+        background-color:white;}
+    </style>
+    <h1 style="text-align:center"> FABRIC PURCHASE REPORT</h1>
+    <button class="btn"><a href="{% url 'purchasexport' %}"><h3>FAB_PURCHASE_EXPORT</h3></a></button>
+    <button class="btn"><a href="{% url 'home' %}"><h3>Back</h3></a></button>
+  </div>
+  <div>
+    {{ html_table | safe }}
+  </div>
+  
+  <h1> Summary </h1>
+  <div>
+    {{ html_summary | safe }}
+  </div>
+
+
+</div>
+</body>
+</html>

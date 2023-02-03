@@ -1,0 +1,45 @@
+
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang='en-US'>
+<head>
+	<title> Search PI </title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">	
+</head>
+<body style="background-color:powderblue">
+    <div>
+        <button class="btn"><a href="{% url 'home' %}"><h3>Back</h3></a></button>
+    </div>
+    
+    <div class="col-md-8 offset-0">
+                    
+        <form>
+            <input type='text' name='query' method="GET" action ="" placeholder="PI Number" />
+            <input type="submit" />
+        <form/>			
+    </div>
+    <div>
+        <p><b> PI number :
+        <a href="{% url 'detail_PI' PINo %}"><h1> {{PINo}}</h1></a>
+
+        <style>
+            th { word-wrap:break-word;
+                text-align:center; color:blue; }
+            th,table,td {border-spacing: 0;
+                text-align:center;
+                width: 100%;
+                table-layout:fixed;
+                border: 1px solid green;
+                word-wrap:break-word
+                }
+        </style>
+        <div>
+            {{ html_table | safe }}
+        </div>
+        <h1> Summary </h1>
+        <div>
+            {{ html_summary | safe }}
+        </div>
+    </div>
+</body>
+</hmtl>

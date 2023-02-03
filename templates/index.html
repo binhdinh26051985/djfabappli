@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+	<title> FAB ORDER</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">	
+</head>
+<body style="background-color:powderblue">
+<div class="card card-body">
+			
+	<button class="btn"><a href="{% url 'createorder' %}"><h3>NEW FAB ORDER</h3></a></button>
+	<button class="btn"><a href="{% url 'Createzoh' %}"><h3>NEW ZROH</h3></a></button>
+	<button class="btn"><a href="{% url 'Createmill' %}"><h3>NEW MILL</h3></a></button>
+	<button class="btn"><a href="{% url 'Createfactory' %}"><h3>NEW FACTORY</h3></a></button>
+	<button class="btn"><a href="{% url 'export_file' %}"><h3>EXPORT DATA</h3></a></button>
+	<button class="btn"><a href="{% url 'salereport' %}"><h3>FAB_SALE</h3></a></button>
+	<button class="btn"><a href="{% url 'Purchase' %}"><h3>PURCHASE</h3></a></button>
+	<button class="btn"><a href="{% url 'searchPI' %}"><h3>Seach_PI</h3></a></button>
+	<button class="btn"><a href="{% url 'homepage' %}"><h3>LOGOUT</h3></a></button>
+	
+	<br>
+</div>
+
+<div class="row">
+	<div class="col-md-5">
+		<h1 style="front-family:verdana;color:black;text-align:center;background-color:DodgerBlue;padding:10px;margin:10px">ITOCHU PROMINENT USA LLC: FABRIC ORDER  </h1>
+<br>
+		<div class="row">
+			<div class="col-md-8 offset-0">
+				<form>
+					<input type='text' name='query' method="GET" placeholder="Search PO/ZOH/INV" />
+					<input type="submit" />
+				<form/>			
+			</div>
+		
+<hr>
+		
+			<style>
+				th { text-align:center; color:blue; }
+				table, th, td { 
+					text-align:center;
+					height: 10px;
+					border: 1px solid rgb(3, 248, 109);
+					background-color:white;}
+			</style>
+			
+			<table class="table table-sm">
+				<caption> <h2>LIST OF FABRIC PO </h2></caption>
+				
+				<tr>
+					<th>PO_NO</th>
+                    <th>Zoh</th>
+					<th>Order_Qty</th>
+                    <th>Now_Peer_X-mill</th>
+                    <th>Ship_to</th>
+					<th>Shipped_Qty</th>
+					<th>Balance_Qty</th>
+                    <th>Tolerance %</th>
+					<th>Mill</th>
+					<th>ETD</th>
+                    <th>ETA</th>
+                    <th>Invoice</th>
+					<th>Actual Sale $</th>
+					<th>Forecast Sale $</th>
+					<th>Actual Cost $</th>
+					<th>Forecast Cost $</th>
+					<th>GM$</th>
+					<th>Order_Status</th>
+					<th>Update</th>
+				</tr>
+
+				{% for order in total_fab_orders %}
+				<tr>
+					<td>{{order.PO_No}}</td>
+					<td>{{order.Zoh}}</td>
+                    <td>{{order.Order_Qty}}</td>
+                    <td>{{order.Peerless_Current_Ex_mill}}</td>
+                    <td>{{order.Ship_to}}</td>
+                    <td>{{order.Shipped_Qty}}</td>
+					<td>{{order.Balqty}}</td>
+                    <td>{{order.Tolerance}}</td>
+					<td>{{order.Mill}}</td>
+                    <td>{{order.ETD}}</td>
+                    <td>{{order.ETA}}</td>
+                    <td>{{order.Inv_No}}</td>
+					<td>{{order.Actual_sale}}</td>
+					<td>{{order.Forecast_sale}}</td>
+					<td>{{order.Actual_cost}}</td>
+					<td>{{order.Forecast_cost}}</td>
+					<td>{{order.Profit}}</td>
+					<td>{{order.Order_status}}</td>
+					<td><button class="btn"><a href="{% url 'updateorder' order.id %}">Update</a></button></td>
+
+				</tr>
+				
+				{% endfor %}
+				
+			</table
+
+
+			<div>
+				<table>
+					<caption> <h2>Summary </h2></caption>
+					<tr>
+						<th>Order Qty</th>
+						<th>Ship Qty</th>
+						<th>Actual Sale$</th>
+						<th>Est_Sale$</th>
+						<th>Actual Cost$</th>
+						<th>Est_Cost$</th>
+						<th>GM$</th>
+					</tr>
+					<tr>
+						<td>{{ord.Order_Qty}}</td>
+						<td>{{ord.Ship_Qty}}</td>
+						<td>{{Sale.Sale_total}}</td>
+						<td>{{Est_Sale.Est_Sale_TT}}</td>
+						<td>{{Cost.Cost_total}}</td>
+						<td>{{Est_Cost.Est_Cost_TT}}</td>
+						<td>{{GM.amount}}</td>
+				
+					</tr>
+				</table>
+			</div>
+		</div>	
+
+	</div>
+
+</div>
+</body>
+</html>

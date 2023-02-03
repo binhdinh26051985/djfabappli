@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+			<form action="" method="POST">
+				{% csrf_token %}
+				<table>
+					<style>
+						th { text-align:center; color:black; }
+						table, th, td { 
+							height: 10px;
+							border: 1px solid rgb(3, 248, 109);
+							background-color:powderblue;}
+					</style>
+
+					<tr> <td> {{form}} </td> </tr>
+				
+					<input type="submit" name="Submit">
+				</table>
+
+			</form>
+
+		</div>
+	</div>
+</div>

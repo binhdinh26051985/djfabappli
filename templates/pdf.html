@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang='en-US'>
+<head>
+	<title> PI </title>
+    <style type="text/css">
+        body {
+            font-weight: 200;
+            font-size: 14px;
+        }
+        .header {
+            font-size: 20px;
+            font-weight: 100;
+            text-align: center;
+            color: #007cae;
+        }
+        .title {
+            font-size: 22px;
+            font-weight: 100;
+           /* text-align: right;*/
+           padding: 10px 20px 0px 20px;  
+        }
+        .title span {
+            color: #007cae;
+        }
+        .details {
+            padding: 10px 20px 0px 20px;
+            text-align: left !important;
+            /*margin-left: 40%;*/
+        }
+        .hrItem {
+            border: none;
+            height: 1px;
+            /* Set the hr color */
+            color: #333; /* old IE */
+            background-color: #fff; /* Modern Browsers */
+        }
+    </style>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">	
+</head>
+<body style="background-color:powderblue">
+    <div class='wrapper'>
+        <div class='header'>
+            <h1 class='title'><b>Proforma Invoice </b> </h1>
+        </div>
+    <div>
+    <div class="row">
+        <div class="col-md-5">
+            <h1 style="front-family:verdana;color:black;text-align:center;background-color:DodgerBlue;padding:10px;margin:10px">ITOCHU PROMINENT USA LLC</h1>
+            <h3 style='text-align:center'> 500 7th Ave, 11th FLOOR - NEW YORK, N.Y.10018</h3>          
+<hr>        
+            <b>Issue Date: {{ issuedate }} </b> 
+            <label><h5>Revision:</h5></label>
+            <input type="date">
+            
+            <br>
+            <br>
+<hr>
+            <div class="row">
+
+                <style>
+                    th { text-align:center; color:blue; }
+                    table, th, td { 
+                        text-align:center;
+                        height: 10px;
+                        border: 1px solid rgb(3, 248, 109);
+                        background-color:white;}
+                </style>
+                <table>
+                    <caption style=text-align:left><h4> Customer imformation: </h4></caption>
+                    <tr>
+                        <th>SHIP_to</th>
+                        <th>BILL_to</th>
+                        <th>Destination</th>
+                        <th>Contact_info</th>
+                        <th>Customer_code</th>
+                        <th>Deliver_Term</th>
+                        <th>Payment_Term</th>
+                    </tr>
+                    <tr>
+                    {% for ft in fty %}
+                        <td>{{ft.SHIP_to}}</td>
+                        <td>{{ft.BILL_to}}</td>
+                        <td>{{ft.Destination}}</td>
+                        <td>{{ft.Contact_info}}</td>
+                        <td>{{ft.Customer_code}}</td>
+                        <td>{{ft.Deliver_Term}}</td>
+                        <td>{{ft.Payment_Term}}</td>
+                        
+                    {% endfor %}
+                    </tr>
+                </table>
+<hr>
+                <table class="table table-sm">
+                    <caption style =text-align:left> <h2>Proforma Invoice No: {{PI1}}</h2></caption>
+                    
+                    <tr>
+                        <th>COO</th>
+                        <th>Ship To</th>
+                        <th>PO_NO</th>
+                        <th>BC PO</th>
+                        <th>ZOH</th>
+                        <th>COLOR</th>
+                        <th>CONTENT</th>
+                        <th>Qty[m]</th>
+                        <th>Price [$/m]</th>
+                        <th>Cuttable width[cm]</th>
+                        <th>Ex-Mill</th>
+                        <th>Amount $</th>
+
+                    </tr>
+    
+                    {% for order in total_fab_orders %}
+                    <tr>
+                        <td>{{order.Coo}}</td>
+                        <td>{{order.Ship_to}}</td>
+                        <td>{{order.PO_No}}</td>
+                        <td>{{order.BC_PO_No}}</td>
+                        <td>{{order.Zoh}}</td>
+                        <td>{{order.Discription}}</td>
+                        <td>{{order.Content}}</td>
+                        <td>{{order.Shipped_Qty}}</td>
+                        <td>{{order.Peerless_Price}}</td>
+                        <td>{{order.Cuttable_Width_cm}}</td>
+                        <td>{{order.Peerless_Current_Ex_mill}}</td>
+                        <td>{{order.Actual_sale}}</td>
+    
+                    </tr>
+
+                    {% endfor %}
+                    
+                    <tr>
+                        <td colspan='7'>Total</td>
+                        <td>{{ordpi.Ship_Qty}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{Salepi.Sale_total}}</td>
+
+
+                    </tr>
+                    
+                </table    
+
+
+            </div>
+        </div>
+
+       
+    </div>
+<hr>
+    <div>
+        <h4>Shipper Information:</h4>
+        <p>ITOCHU PROMINENT USA LLC <br> 500 7th Ave, 11th FLOOR <br> NEW YORK, NY 10018 USA</p>
+        <P><h5>1) Please open the L/C in favor of  Itochu Prominent USA LLC.  1411 Broadway 7Th Floor, N. Y., N. Y. 10018 </h5></p>
+        <p> Our SWIFT: MHCBUS33 <br> Name: Mizuho Corporate Bank, Ltd., New York <br>Address: 1251 Avenue of the Americas <br>New York, NY 10020</p>
+        <p>2) Please allow 3% plus or minus of total quantity in the L/C. <br>3) Please allow at least 3-5 days for us to send documents to you. <br>
+        4) Please note the following: <br>
+        5) We will only arrange shipment upon receipt swift L/C. <br>
+        6) Please send us the L/C application via e-mail to benjamas.mason@itochupro.com with L/C number ASAP.<br>
+        6) Please send us the L/C application via e-mail to benjamas.mason@itochupro.com with L/C number ASAP.<br>
+        7) Please allow "PARTIAL SHIPMENT".</p>
+        <p ><h5 style="color:red;">OR T/T BEFORE SHIPMENT <br>
+        Please remit payment to Itochu Prominent USA LLC to the JP Morgan <br>
+        Chase Bank - 1411 Broadway, NYC NY 10018 Acct #020-934785 <br>
+        Routing ABA #021000021  Swift #CHASUS33</h5></p>
+    </div>  
+    
+</body>
+</hmtl>

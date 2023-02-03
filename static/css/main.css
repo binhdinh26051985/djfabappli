@@ -1,0 +1,28 @@
+.btn {
+    margin-right: 4px;
+    background-color: rgba(30, 255, 56, 0.832); /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 6px 6px; /* Some padding */
+    font-size: 10px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+  }
+  
+  /* Darker background on mouse-over */
+  .btn:hover {
+    background-color: rgb(8, 175, 47);
+  }
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 4px 4px;
+  }
+  
+  a:hover {
+    background-color: rgb(231, 11, 165);
+    color: black;
+  }
+
+ 
+ 
